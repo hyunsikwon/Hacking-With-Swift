@@ -22,7 +22,7 @@ class TableViewController: UITableViewController {
         
         let path = Bundle.main.resourcePath! ///Users/hyunsikwon/Library/Developer/CoreSimulator/Devices/A918701B-6D05-4056-8306-F393D2376FB7/data/Containers/Bundle/Application/7B226FE4-4FA4-499F-8F22-1DDF6415A790/Project1.app
         let items = try! fm.contentsOfDirectory(atPath: path)
-        
+ 
         for item in items {
             if item.hasPrefix("nssl") {
                 pictures.append(item)
@@ -57,8 +57,8 @@ class TableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let vc = storyboard?.instantiateViewController(identifier: "Detail") as? DetailViewController {
             vc.selectedImage = pictures[indexPath.row]
-            vc.X = indexPath.row + 1;
-            vc.Y = pictures.count
+            vc.selectedPictureNumber = indexPath.row + 1;
+            vc.totalPicture = pictures.count
             
             navigationController?.pushViewController(vc, animated: true)
         }
