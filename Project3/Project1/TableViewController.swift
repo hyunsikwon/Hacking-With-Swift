@@ -17,7 +17,6 @@ class TableViewController: UITableViewController {
         
         title = "Storm Viewer"
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareTapped))
         
         let fm = FileManager.default
         
@@ -63,15 +62,6 @@ class TableViewController: UITableViewController {
             
             navigationController?.pushViewController(vc, animated: true)
         }
-    }
-    
-    //MARK: Private Methods
-    @objc private func shareTapped() {
-        let shareMessage = "Download Project 1 to get awesome pictures of great storms"
-        let vc = UIActivityViewController(activityItems: [shareMessage], applicationActivities: [])
-        
-        present(vc, animated: true, completion: nil)
-        
     }
     
     

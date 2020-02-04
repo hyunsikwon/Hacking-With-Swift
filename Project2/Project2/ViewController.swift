@@ -22,7 +22,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+            
         button1.layer.borderWidth = 1
         button2.layer.borderWidth = 1
         button3.layer.borderWidth = 1
@@ -56,11 +56,19 @@ class ViewController: UIViewController {
         
     }
     
+    @IBAction func showScore(_ sender: Any) {
+        let ac = UIAlertController(title: "My score", message: "Your score is \(score)", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Back to the Game", style: .cancel, handler: nil))
+        present(ac, animated: true, completion: nil)
+        
+        
+    }
+    
     //MARK: Private Methods
     private func askQuestion(action: UIAlertAction! = nil) {
         countries.shuffle()
         correctAnswer = Int.random(in: 0...2)
-        title = "\(countries[correctAnswer].uppercased()) / Your score : \(score)"
+        title = "\(countries[correctAnswer].uppercased())"
         button1.setImage(UIImage(named: countries[0]), for: .normal)
         button2.setImage(UIImage(named: countries[1]), for: .normal)
         button3.setImage(UIImage(named: countries[2]), for: .normal)
@@ -93,6 +101,6 @@ class ViewController: UIViewController {
         //The final line calls present(), which takes two parameters: a view controller to present and whether to animate the presentation.
         
     }
-    
+
 }
 

@@ -48,7 +48,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="gjE-DJ-IX7"/>
+                    <navigationItem key="navigationItem" id="gjE-DJ-IX7">
+                        <barButtonItem key="rightBarButtonItem" title="My score" id="3tv-Xy-bby">
+                            <connections>
+                                <action selector="showScore:" destination="BYZ-38-t0r" id="Gt3-Yd-KqA"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="button1" destination="fJ3-Wv-uOj" id="5bQ-w0-DaS"/>
                         <outlet property="button2" destination="UoT-hS-udk" id="xlo-GX-29D"/>
