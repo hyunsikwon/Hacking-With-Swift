@@ -30,7 +30,7 @@ class ViewController: UIViewController {
         button1.layer.borderColor = UIColor.lightGray.cgColor
         button2.layer.borderColor = UIColor.lightGray.cgColor
         button3.layer.borderColor = UIColor.lightGray.cgColor
-        //        As you can see, UIColor has a property called lightGray that returns (shock!) a UIColor instance that represents a light gray color. But we can't put a UIColor into the borderColor property because it belongs to a CALayer, which doesn't understand what a UIColor is. So, we add .cgColor to the end of the UIColor to have it automagically converted to a CGColor. Perfect.
+        //  As you can see, UIColor has a property called lightGray that returns (shock!) a UIColor instance that represents a light gray color. But we can't put a UIColor into the borderColor property because it belongs to a CALayer, which doesn't understand what a UIColor is. So, we add .cgColor to the end of the UIColor to have it automagically converted to a CGColor. Perfect.
         
         countries += ["estonia", "france", "germany", "ireland", "italy", "monaco", "nigeria", "poland", "russia", "spain", "uk", "us"]
         askQuestion()
