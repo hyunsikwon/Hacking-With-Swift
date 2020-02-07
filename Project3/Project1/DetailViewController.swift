@@ -38,13 +38,13 @@ class DetailViewController: UIViewController {
     }
     
     @objc func shareTapped() {
-        guard let image = imageView.image?.jpegData(compressionQuality: 0.8), let selectedImage = selectedImage else {
+        guard let image = imageView.image?.jpegData(compressionQuality: 0.8) else {
             print("No image found")
             return
         }
         
         // activityItems is an array of items you want to share. applicationActivities is an array of our own app services.
-        let vc = UIActivityViewController(activityItems: [image, selectedImage], applicationActivities: [])
+        let vc = UIActivityViewController(activityItems: [image], applicationActivities: [])
         
         // Location where the viewController needs to be anchored. Optional because this code only runs on iPads. iPhones display activity view controllers using full screen.
         vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
