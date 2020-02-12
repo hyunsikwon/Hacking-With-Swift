@@ -44,6 +44,8 @@ class ViewController: UIViewController, WKNavigationDelegate {
         webView.allowsBackForwardNavigationGestures = true
     }
     
+    //MARK: - Observer
+//    This tells you when an observed value has changed,
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         progressView.isHidden = false
         if keyPath == "estimatedProgress" {
@@ -51,6 +53,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
         }
     }
     
+    //MARK: - Private Methods
     @objc private func openTapped() {
         let ac = UIAlertController(title: "Open page..", message: nil, preferredStyle: .actionSheet)
         
@@ -64,12 +67,13 @@ class ViewController: UIViewController, WKNavigationDelegate {
         
     }
     
+    // actionSheet에서 버튼이 눌렸을때 호출.
     private func openPage(action: UIAlertAction) {
         let url = URL(string: "https://" + action.title!)!
         webView.load(URLRequest(url: url))
-        
     }
     
+    // MARK: - WKNavigationDelegate
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         title = webView.title
         progressView.isHidden = true
