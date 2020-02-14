@@ -11,6 +11,7 @@ import WebKit
 
 class ViewController: UIViewController, WKNavigationDelegate {
     
+    // MARK: - Properties
     var webView: WKWebView!
     var progressView: UIProgressView!
     var websites = ["apple.com", "hackingwithswift.com", "microsoft.com"]
@@ -45,7 +46,8 @@ class ViewController: UIViewController, WKNavigationDelegate {
     }
     
     //MARK: - Observer
-//    This tells you when an observed value has changed,
+    // Once you have registered as an observer using KVO, you must implement a method called observeValue().
+    // This tells you when an observed value has changed,
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         progressView.isHidden = false
         if keyPath == "estimatedProgress" {
@@ -81,18 +83,22 @@ class ViewController: UIViewController, WKNavigationDelegate {
     }
     
     // This delegate callback allows us to decide whether we want to allow navigation to happen or not every time something happens.
+    // should we load the page or should we not?
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         let url = navigationAction.request.url
         
-        if let host = url?.host {
+        if let host = url?.host { // domain. ex) apple.com
             for website in websites {
                 if host.contains(website) {
                     decisionHandler(.allow)
                     return
                 }
             }
-            let ac = UIAlertController(title: "Restricted website",
-                                       message: "The site located at \(host) is not allowed", preferredStyle: .alert)
+            let ac = UIAlertController(
+                title: "Restricted website",
+                message: "The site located at \(host) is not allowed",
+                preferredStyle: .alert)
+            
             ac.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             present(ac, animated: true)
         }
@@ -101,6 +107,14 @@ class ViewController: UIViewController, WKNavigationDelegate {
     }
     
     
-    
 }
+
+//MARK: - addObserver Method란
+/*
+ The addObserver() method takes four parameters
+ 1. who the observer is (we're the observer, so we use self)
+ 2. what property we want to observe (we want the estimatedProgress property of WKWebView)
+ 3. which value we want (we want the value that was just set, so we want the new one)
+ 4. and a context value.
+ */
 
