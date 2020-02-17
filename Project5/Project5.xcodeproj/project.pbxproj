@@ -17,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7E2A9ED823FAB61700D6272D /* CheckerTest.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = CheckerTest.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		7EAB5CEA23F415050039B50A /* Project5.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project5.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EAB5CED23F415050039B50A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7EAB5CEF23F415050039B50A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,6 +65,7 @@
 				7EAB5D0423F416620039B50A /* start.txt */,
 				7EAB5D0123F4151A0039B50A /* Supporting Files */,
 				7EAB5CFB23F415050039B50A /* Info.plist */,
+				7E2A9ED823FAB61700D6272D /* CheckerTest.playground */,
 			);
 			path = Project5;
 			sourceTree = "<group>";
