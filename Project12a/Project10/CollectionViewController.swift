@@ -16,6 +16,12 @@ class CollectionViewController: UICollectionViewController, UIImagePickerControl
         super.viewDidLoad()
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewPerson))
+        let defaults = UserDefaults.standard
+        if let savedData = defaults.object(forKey: "people") as? Data {
+            if let decodedPeople = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(savedData) as? [Person] {
+                people = decodedPeople
+            }
+        }
         
     }
     
@@ -60,6 +66,7 @@ class CollectionViewController: UICollectionViewController, UIImagePickerControl
                 guard let newName = ac?.textFields?[0].text else { return }
                 person.name = newName
                 self?.collectionView.reloadData()
+                self?.save()
             }))
             
             self.present(ac, animated: true)
@@ -69,6 +76,7 @@ class CollectionViewController: UICollectionViewController, UIImagePickerControl
         actionSheet.addAction(UIAlertAction(title: "Delete", style: .default, handler: { [weak self]_ in
             self?.people.remove(at: indexPath.item)
             self?.collectionView.deleteItems(at: [indexPath])
+            self?.save()
             
         }))
         
@@ -91,6 +99,14 @@ class CollectionViewController: UICollectionViewController, UIImagePickerControl
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         return paths[0]
     }
+    
+    private func save() {
+        if let savdeData = try? NSKeyedArchiver.archivedData(withRootObject: people, requiringSecureCoding: false) { // converts our array into a Data object
+            let defaults = UserDefaults.standard
+            defaults.set(savdeData, forKey: "people")
+        }
+    }
+    
     
     // MARK: - UIImagePickerControllerDelegate
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
