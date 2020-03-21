@@ -3,4 +3,23 @@
    uuid = "3E581D37-2DB3-466D-B5B4-3587A1BF34FD"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B9BC00DF-686A-470B-8B79-69467D963670"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            condition = "answer.count &gt;= 6"
+            continueAfterRunningActions = "No"
+            filePath = "Project5/TableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "submit(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
