@@ -33,31 +33,33 @@ class ViewController: UIViewController, MKMapViewDelegate {
         
         let identifier = "Capital"
         
-        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
-        
-        if annotationView == nil {
-            
-            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-            annotationView?.canShowCallout = true
-            
-            let btn = UIButton(type: .detailDisclosure)
-            annotationView?.rightCalloutAccessoryView = btn
+        if let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) {
+            annotationView.annotation = annotation
+            return annotationView
+
             
         } else {
-            annotationView?.annotation = annotation
+            
+            let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            annotationView.canShowCallout = true
+            annotationView.pinTintColor = UIColor.blue
+            
+            let btn = UIButton(type: .detailDisclosure)
+            annotationView.rightCalloutAccessoryView = btn
+            return annotationView
+
         }
         
-        return annotationView
     }
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         guard let capital = view.annotation as? Capital else { return }
-//        let placeName = capital.title
-//        let placeInfo = capital.info
-//
-//        let ac = UIAlertController(title: placeName, message: placeInfo, preferredStyle: .alert)
-//        ac.addAction(UIAlertAction(title: "OK", style: .default))
-//        present(ac, animated: true)
+        //        let placeName = capital.title
+        //        let placeInfo = capital.info
+        //
+        //        let ac = UIAlertController(title: placeName, message: placeInfo, preferredStyle: .alert)
+        //        ac.addAction(UIAlertAction(title: "OK", style: .default))
+        //        present(ac, animated: true)
         print("city name = \(capital.title)")
         if let vc = storyboard?.instantiateViewController(identifier: "WebView") as? DetailViewController {
             vc.capital = capital
